@@ -1,0 +1,56 @@
+plugins {
+    id 'com.github.sherter.google-java-format' version '0.8'
+}
+
+apply plugin: 'maven'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'java'
+apply plugin: 'jacoco'
+
+googleJavaFormat {
+    options style: 'AOSP'
+    source = sourceSets*.allJava
+    include '**/*.java'
+    exclude '**/temp/*.java'
+}
+
+verifyGoogleJavaFormat {
+    source = sourceSets*.allJava
+    include '**/*.java'
+    exclude '**/temp/*.java'
+}
+
+[compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+    maven {
+        jcenter()
+        url "http://maven.aliyun.com/nexus/content/groups/public/"
+    }
+}
+
+// In this section you declare the dependencies for your production and test code
+dependencies {
+
+    compile("org.bouncycastle:bcprov-jdk15on:1.60")
+    implementation 'junit:junit:4.12'
+    implementation 'junit:junit:4.12'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+        resources {
+            srcDir 'src/main/resources'
+        }
+    }
+}
+
+jar {
+    destinationDir file('dist')
+    archiveName project.name + '.jar'
+}
