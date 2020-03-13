@@ -1,17 +1,17 @@
-# Paillier
+# paillier-lib
 
 ![](https://github.com/FISCO-BCOS/FISCO-BCOS/raw/master/docs/images/FISCO_BCOS_Logo.svg?sanitize=true)
 
 
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-[![GitHub issues](https://img.shields.io/github/issues/FISCO-BCOS/paillier.svg)](https://github.com/FISCO-BCOS/paillier/issues)
-![GitHub All Releases](https://img.shields.io/github/downloads/FISCO-BCOS/paillier/total.svg)
-[![GitHub license](https://img.shields.io/github/license/FISCO-BCOS/paillier.svg)](https://github.com/FISCO-BCOS/Paillier/blob/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/FISCO-BCOS/paillier-lib.svg)](https://github.com/FISCO-BCOS/paillier-lib/issues)
+![GitHub All Releases](https://img.shields.io/github/downloads/FISCO-BCOS/paillier-lib/total.svg)
+[![GitHub license](https://img.shields.io/github/license/FISCO-BCOS/paillier-lib.svg)](https://github.com/FISCO-BCOS/paillier-lib/blob/master/LICENSE)
 
-Paillier同态加密算法库，具体包括：
+paillier同态加密算法库，具体包括：
 
-1. java库：实现了完整的Paillier同态库，可完成加解密和同态加运算。
+1. java库：实现了完整的paillier同态库，可完成加解密和同态加运算。
 
 2. cpp接口：提供同态加接口，核心算法由c语言实现，并用c++实现了调用协议的封装。
 
@@ -21,7 +21,7 @@ Paillier同态加密算法库，具体包括：
 
 - 公私钥对生成和编解码
 - 基于RSA的数据加解密接口
-- 密文的Paillier加法同态运算
+- 密文的paillier加法同态运算
 - java库提供了完整的同态功能支持，cpp接口为链上预编译合约提供密文加同态支持
 
 ## Java库说明
@@ -86,9 +86,9 @@ Paillier同态加密算法库，具体包括：
 生成的jar文件位于paillierJava/dist目录
 ```bash
 # 下载
-git clone https://github.com/FISCO-BCOS/Paillier.git
+git clone https://github.com/FISCO-BCOS/paillier-lib.git
 # 编译
-cd Paillier/paillierJava && gradle build
+cd paillier-lib/paillierJava && gradle build
 ```
 
 **开发示例**
@@ -131,7 +131,7 @@ BigInteger o3 = PaillierCipher.decryption(c3, priKey);
 ### 编译运行
 
 ```bash
-# 假设当前在paillier目录
+# 假设当前在paillier-lib目录
 mkdir build && cd build
 # CentOS请使用cmake3
 cmake ..
@@ -149,7 +149,7 @@ make
 
 **FISCO BCOS开源社区**是国内活跃的开源社区，社区长期为机构和个人开发者提供各类支持与帮助。已有来自各行业的数千名技术爱好者在研究和使用FISCO BCOS。如您对FISCO BCOS开源技术及应用感兴趣，欢迎加入社区获得更多支持与帮助。
 
-![](https://media.githubusercontent.com/media/FISCO-BCOS/LargeFiles/master/images/QR_image.png)
+![](https://raw.githubusercontent.com/FISCO-BCOS/LargeFiles/master/images/QR_image.png)
 
 ## License
 
