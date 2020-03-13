@@ -9,24 +9,22 @@
 ![GitHub All Releases](https://img.shields.io/github/downloads/FISCO-BCOS/paillier/total.svg)
 [![GitHub license](https://img.shields.io/github/license/FISCO-BCOS/paillier.svg)](https://github.com/FISCO-BCOS/Paillier/blob/master/LICENSE)
 
-Paillier同态加密算法库，包括公私钥对生成、加密、解密以及加法同态接口。
+Paillier同态加密算法库，具体包括：
 
-1. java同态库：链外工具包，实现了完整的Paillier同态库，可完成加解密和同态加运算。
+1. java库：实现了完整的Paillier同态库，可完成加解密和同态加运算。
 
-2. cpp同态接口：底层接口由c语言实现，并用c++实现了调用协议的封装。
+2. cpp接口：提供同态加接口，核心算法由c语言实现，并用c++实现了调用协议的封装。
 
-[FISCO BCOS](https://github.com/FISCO-BCOS/FISCO-BCOS/tree/master)隐私模块中同态加密的预编译合约便是调用此cpp同态接口。
-
-java同态库和cpp同态接口的密文封装协议是一致的， 即通过java同态库生成的密文可以直接调用cpp同态接口完成加同态运算，生成的同态密文可以调用java同态库解密。
+[FISCO BCOS](https://github.com/FISCO-BCOS/FISCO-BCOS/tree/master)隐私模块中同态加密的预编译合约便是调用此cpp同态接口。java同态库和cpp同态接口的密文封装协议是一致的， 即通过java同态库生成的密文可以直接调用cpp同态接口完成加同态运算，生成的同态密文可以调用java同态库解密。
 
 ## 关键特性
 
-- 同态公私钥对生成和编解码
-- 基于paillier的数据加解密接口
-- 密文的加法同态运算
+- 公私钥对生成和编解码
+- 基于RSA的数据加解密接口
+- 密文的Paillier加法同态运算
 - java库提供了完整的同态功能支持，cpp接口为链上预编译合约提供密文加同态支持
 
-## java同态库说明
+## Java库说明
 
 ### 公私钥模块（PaillierKeyPair）
 
@@ -116,9 +114,9 @@ String c3 = PaillierCipher.ciphertextAdd(c1,c2);
 BigInteger o3 = PaillierCipher.decryption(c3, priKey);
 ```
 
-## cpp同态接口说明
+## Cpp接口说明
 
-### cpp同态接口
+### 密文同态加接口
 
 - 接口名称：paillierAdd
 - 接口功能说明：加法同态接口
