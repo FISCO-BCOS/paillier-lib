@@ -2,12 +2,10 @@
 
 ![](https://github.com/FISCO-BCOS/FISCO-BCOS/raw/master/docs/images/FISCO_BCOS_Logo.svg?sanitize=true)
 
-
-
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![GitHub issues](https://img.shields.io/github/issues/FISCO-BCOS/paillier-lib.svg)](https://github.com/FISCO-BCOS/paillier-lib/issues)
-![GitHub All Releases](https://img.shields.io/github/downloads/FISCO-BCOS/paillier-lib/total.svg)
-[![GitHub license](https://img.shields.io/github/license/FISCO-BCOS/paillier-lib.svg)](https://github.com/FISCO-BCOS/paillier-lib/blob/master/LICENSE)
+[![All releases](https://img.shields.io/github/release/FISCO-BCOS/paillier-lib.svg)](https://github.com/FISCO-BCOS/paillier-lib/releases)
+![](https://img.shields.io/github/license/FISCO-BCOS/paillier-lib) 
 
 paillier同态加密算法库，具体包括：
 
@@ -153,6 +151,6 @@ make
 
 ## License
 
-![license](https://img.shields.io/badge/license-Apache%20v2-blue.svg)
+![license](https://img.shields.io/github/license/FISCO-BCOS/paillier-lib.svg)
 
-Paillier的开源协议为[APACHE LICENSE 2.0](http://www.apache.org/licenses/). 详情参考[LICENSE](./LICENSE)。
+paillier-lib的开源协议为[APACHE LICENSE 2.0](http://www.apache.org/licenses/). 详情参考[LICENSE](./LICENSE)。
