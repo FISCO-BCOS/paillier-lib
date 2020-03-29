@@ -4,7 +4,7 @@
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![GitHub issues](https://img.shields.io/github/issues/FISCO-BCOS/paillier-lib.svg)](https://github.com/FISCO-BCOS/paillier-lib/issues)
-[![All releases](https://img.shields.io/github/release/FISCO-BCOS/paillier-lib.svg)](https://github.com/FISCO-BCOS/paillier-lib/releases)
+[![All releases](https://img.shields.io/github/release/FISCO-BCOS/paillier-lib.svg)](https://github.com/FISCO-BCOS/paillier-lib/releases/latest)
 ![](https://img.shields.io/github/license/FISCO-BCOS/paillier-lib) 
 
 paillier同态加密算法库，具体包括：
@@ -29,20 +29,20 @@ paillier同态加密算法库，具体包括：
 - 接口名称：generateGoodKeyPair
 - 接口功能说明：生成同态加密的公私钥对，2048位
 
-| 输入参数     | 参数类型     | 参数说明                                   |
+| 输入     | 类型     | 说明                                   |
 | :----------- | :----------- | :----------------------------------------- |
 | 无    |           |             |
-| **输出参数** | **参数类型** | **参数说明**                               |
-| 返回值       | KeyPair      | 生成的密钥对 （其他 ：成功    null：失败） |
+| **输出** | **类型** | **说明**                               |
+| 返回值       | KeyPair      | 生成的密钥对  |
 
 - 接口名称：generateStrongKeyPair
 - 接口功能说明：生成同态加密的公私钥对，4096位
 
-| 输入参数     | 参数类型     | 参数说明                                   |
+| 输入     | 类型     | 说明                                   |
 | :----------- | :----------- | :----------------------------------------- |
 | 无    |           |             |
-| **输出参数** | **参数类型** | **参数说明**                               |
-| 返回值       | KeyPair      | 生成的密钥对 （其他 ：成功    null：失败） |
+| **输出** | **类型** | **说明**                               |
+| 返回值       | KeyPair      | 生成的密钥对  |
 
 
 ### 同态算法模块（PaillierCipher）
@@ -50,32 +50,32 @@ paillier同态加密算法库，具体包括：
 - 接口名称：encryption
 - 接口功能说明：对数据进行同态加密
 
-| 输入参数     | 参数类型     | 参数说明                         |
+| 输入     | 类型     | 说明                         |
 | :----------- | :----------- | :------------------------------- |
 | m            | BigInteger   | 待加密的操作数                   |
 | publickey    | PublicKey    | 加密公钥，可以通过公私钥模块获取 |
-| **输出参数** | **参数类型** | **参数说明**                     |
-| 返回值       | String       | 成功：密文    失败：空串         |
+| **输出** | **类型** | **说明**                     |
+| 返回值       | String       | 成功：密文，    失败：空串         |
 
 - 接口名称：decryption
 - 接口功能说明：对加密数据进行解密还原操作数
 
-| 输入参数     | 参数类型     | 参数说明                         |
+| 输入     | 类型     | 说明                         |
 | :----------- | :----------- | :------------------------------- |
 | ciphertext   | String       | 密文                             |
 | privateKey   | PrivateKey   | 解密私钥，可以通过公私钥模块获取 |
-| **输出参数** | **参数类型** | **参数说明**                     |
-| 返回值       | BigInteger   | 成功：明文    失败：空串         |
+| **输出** | **类型** | **说明**                     |
+| 返回值       | BigInteger   | 成功：明文，    失败：空串         |
 
 - 接口名称：ciphertextAdd
 - 接口功能说明：加法同态实现
 
-| 输入参数     | 参数类型     | 参数说明                           |
+| 输入     | 类型     | 说明                           |
 | :----------- | :----------- | :--------------------------------- |
 | ciphertext1  | String       | 同态加密后的操作数1                |
 | ciphertext2  | String       | 同态加密后的操作数2                |
-| **输出参数** | **参数类型** | **参数说明**                       |
-| 返回值       | String       | 成功：同态加法的密文    失败：空串 |
+| **输出** | **类型** | **说明**                       |
+| 返回值       | String       | 成功：密文，    失败：空串 |
 
 ### 使用教程
 
@@ -119,12 +119,12 @@ BigInteger o3 = PaillierCipher.decryption(c3, priKey);
 - 接口名称：paillierAdd
 - 接口功能说明：加法同态接口
 
-| 输入参数     | 参数类型     | 参数说明                           |
+| 输入     | 类型     | 说明                           |
 | :----------- | :----------- | :--------------------------------- |
 | cipher1      | string       | 同态加密后的操作数1                |
 | cipher2      | string       | 同态加密后的操作数2                |
-| **输出参数** | **参数类型** | **参数说明**                       |
-| 返回值       | string       | 成功：同态加法的密文    失败：空串 |
+| **输出** | **类型** | **说明**                       |
+| 返回值       | string       | 成功：密文，    失败：空串 |
 
 ### 编译运行
 
