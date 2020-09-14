@@ -34,9 +34,8 @@ repositories {
 // In this section you declare the dependencies for your production and test code
 dependencies {
 
-    compile("org.bouncycastle:bcprov-jdk15on:1.60")
-    implementation 'junit:junit:4.12'
-    implementation 'junit:junit:4.12'
+    compile 'org.bouncycastle:bcprov-jdk15on:1.60'
+    compile 'junit:junit:4.12'
 }
 
 sourceSets {
