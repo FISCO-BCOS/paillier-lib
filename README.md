@@ -46,7 +46,7 @@ paillier同态加密算法库，具体包括：
 
 ### 同态算法模块（PaillierCipher）
 
-- 接口名称：encryption
+- 接口名称：encrypt
 - 接口功能说明：对数据进行同态加密
 
 | 输入     | 类型     | 说明                         |
@@ -56,7 +56,7 @@ paillier同态加密算法库，具体包括：
 | **输出** | **类型** | **说明**                     |
 | 返回值       | String       | 成功：密文，    失败：空串         |
 
-- 接口名称：decryption
+- 接口名称：decrypt
 - 接口功能说明：对加密数据进行解密还原操作数
 
 | 输入     | 类型     | 说明                         |
@@ -98,17 +98,17 @@ RSAPrivateKey priKey = (RSAPrivateKey)keypair.getPrivate();
 
 // encrypt the first number with public key
 BigInteger i1 = BigInteger.valueOf(1000000);
-String c1 = PaillierCipher.encryption(i1, pubKey);
+String c1 = PaillierCipher.encrypt(i1, pubKey);
 
 // encrypt the second number with same public key
 BigInteger i2 = BigInteger.valueOf(2012012012);
-String c2 = PaillierCipher.encryption(i2, pubKey);
+String c2 = PaillierCipher.encrypt(i2, pubKey);
 
 // paillier add with numbers
 String c3 = PaillierCipher.ciphertextAdd(c1,c2);
 
 // decrypt the result
-BigInteger o3 = PaillierCipher.decryption(c3, priKey);
+BigInteger o3 = PaillierCipher.decrypt(c3, priKey);
 ```
 
 ## Cpp接口说明
