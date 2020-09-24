@@ -1,5 +1,6 @@
 plugins {
     id 'com.github.sherter.google-java-format' version '0.8'
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
 }
 
 apply plugin: 'maven'
@@ -7,6 +8,7 @@ apply plugin: 'idea'
 apply plugin: 'eclipse'
 apply plugin: 'java'
 apply plugin: 'jacoco'
+apply plugin: 'com.github.johnrengelman.shadow'
 
 googleJavaFormat {
     options style: 'AOSP'
@@ -34,22 +36,14 @@ repositories {
 // In this section you declare the dependencies for your production and test code
 dependencies {
 
-    compile 'org.bouncycastle:bcprov-jdk15on:1.60'
-    compile 'junit:junit:4.12'
+    implementation 'org.bouncycastle:bcprov-jdk15on:1.60'
+    implementation 'junit:junit:4.12'
 }
 
-sourceSets {
-    main {
-        java {
-            srcDir 'src/main/java'
-        }
-        resources {
-            srcDir 'src/main/resources'
-        }
-    }
-}
+jar.enabled = false
+project.tasks.assemble.dependsOn project.tasks.shadowJar
 
-jar {
+shadowJar {
     destinationDir file('dist')
     archiveName project.name + '.jar'
 }
