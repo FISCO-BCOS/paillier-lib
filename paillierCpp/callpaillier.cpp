@@ -111,25 +111,28 @@ CallPaillier::paillierAdd(const std::vector<unsigned char> &cipher1,
   std::copy(cipher2.begin() + 2 + pkLen, cipher2.end(), BN_C2);
 
   PAI_HomAdd(BN_Result, BN_C1, BN_C2, BN_PK, BN_Len / 4);
-  std::vector<unsigned char> result(BN_Result, BN_Result + 2 * BN_Len);
 
-  //   // encode result
-  //   U32 BN_CryptLen = cipher1.size() / 2;
-  //   U8 *BN_CryptResult = new U8[BN_CryptLen + 1];
-  //   memcpy((char *)BN_CryptResult, (char *)&nLen, sizeof(nLen));
-  //   memcpy((char *)(BN_CryptResult + sizeof(nLen)), BN_PK, BN_Len);
-  //   memcpy((char *)(BN_CryptResult + sizeof(nLen) + BN_Len), BN_Result,
-  //          2 * BN_Len);
+  // encode result
+  U32 BN_CryptLen = cipher1.size();
+  U8 *BN_CryptResult = new U8[BN_CryptLen + 1];
+  memcpy((char *)BN_CryptResult, (char *)&nLen, sizeof(nLen));
+  memcpy((char *)(BN_CryptResult + sizeof(nLen)), BN_PK, BN_Len);
+  memcpy((char *)(BN_CryptResult + sizeof(nLen) + BN_Len), BN_Result,
+         2 * BN_Len);
+
+  std::vector<unsigned char> result(BN_CryptResult,
+                                    BN_CryptResult + BN_CryptLen);
 
   //   for (size_t i = 0; i < BN_CryptLen; i++) {
   //     char tmp[3] = {0};
   //     sprintf(tmp, "%02X", BN_CryptResult[i]);
   //     result.append(tmp);
-  //   }
+  //     //   }
+
   delete[] BN_PK;
   delete[] BN_C1;
   delete[] BN_C2;
   delete[] BN_Result;
-  //   delete[] BN_CryptResult;
+  delete[] BN_CryptResult;
   return result;
 }
