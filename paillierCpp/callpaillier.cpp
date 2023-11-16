@@ -115,7 +115,7 @@ CallPaillier::paillierAdd(const std::vector<unsigned char> &cipher1,
   // encode result
   U32 BN_CryptLen = cipher1.size();
   U8 *BN_CryptResult = new U8[BN_CryptLen + 1];
-  memcpy((char *)BN_CryptResult, (char *)&nLen, sizeof(nLen));
+  memcpy((char *)BN_CryptResult, (char *)&len, sizeof(nLen));
   memcpy((char *)(BN_CryptResult + sizeof(nLen)), BN_PK, BN_Len);
   memcpy((char *)(BN_CryptResult + sizeof(nLen) + BN_Len), BN_Result,
          2 * BN_Len);
