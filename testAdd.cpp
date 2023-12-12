@@ -79,70 +79,83 @@ string cipher3 =
     "B4288DD479264D1A8DE5B318A06A3C013411D5F5037A5823404D30C542F8F809EA624CDB"
     "CD0332E6D28106484B2F4EC754D0";
 
-std::vector<unsigned char> hexStringToBytes(const std::string &hexString) {
-  std::vector<unsigned char> bytes;
+std::vector<unsigned char> hexStringToBytes(const std::string& hexString)
+{
+    std::vector<unsigned char> bytes;
 
-  if (hexString.size() % 2 != 0) {
-    std::cerr << "Error: Hex string must have an even length." << std::endl;
+    if (hexString.size() % 2 != 0)
+    {
+        std::cerr << "Error: Hex string must have an even length." << std::endl;
+        return bytes;
+    }
+
+    for (size_t i = 0; i < hexString.size(); i += 2)
+    {
+        std::string byteString = hexString.substr(i, 2);
+        unsigned char byte = static_cast<unsigned char>(std::stoul(byteString, nullptr, 16));
+        bytes.push_back(byte);
+    }
+
     return bytes;
-  }
-
-  for (size_t i = 0; i < hexString.size(); i += 2) {
-    std::string byteString = hexString.substr(i, 2);
-    unsigned char byte =
-        static_cast<unsigned char>(std::stoul(byteString, nullptr, 16));
-    bytes.push_back(byte);
-  }
-
-  return bytes;
 }
 
-std::string bytesToHexString(const std::vector<unsigned char> &data) {
-  std::stringstream stream;
-  for (const auto &byte : data) {
-    stream << std::hex << std::setw(2) << std::setfill('0') << std::uppercase
-           << static_cast<int>(byte);
-  }
-  return stream.str();
+std::string bytesToHexString(const std::vector<unsigned char>& data)
+{
+    std::stringstream stream;
+    for (const auto& byte : data)
+    {
+        stream << std::hex << std::setw(2) << std::setfill('0') << std::uppercase
+               << static_cast<int>(byte);
+    }
+    return stream.str();
 }
 
-void testHexCipher() {
-  string result;
-  shared_ptr<CallPaillier> callPaillier;
-  callPaillier = std::make_shared<CallPaillier>();
-  try {
-    result = callPaillier->paillierAdd(cipher1, cipher2);
-  } catch (CallException &e) {
-    cout << string(e.what()) << endl;
-  }
-  cout << "Expected: " << cipher3 << endl;
-  cout << "Actually: " << result << endl;
-  if (result == cipher3)
-    cout << "Test passed!" << endl;
-  else
-    cout << "Test failed!" << endl;
+void testHexCipher()
+{
+    string result;
+    shared_ptr<CallPaillier> callPaillier;
+    callPaillier = std::make_shared<CallPaillier>();
+    try
+    {
+        result = callPaillier->paillierAdd(cipher1, cipher2);
+    }
+    catch (CallException& e)
+    {
+        cout << string(e.what()) << endl;
+    }
+    cout << "Expected: " << cipher3 << endl;
+    cout << "Actually: " << result << endl;
+    if (result == cipher3)
+        cout << "Test passed!" << endl;
+    else
+        cout << "Test failed!" << endl;
 }
 
-void testBytesCipher() {
-  string result;
-  shared_ptr<CallPaillier> callPaillier;
-  callPaillier = std::make_shared<CallPaillier>();
-  try {
-    result = bytesToHexString(callPaillier->paillierAdd(
-        hexStringToBytes(cipher1), hexStringToBytes(cipher2)));
-  } catch (CallException &e) {
-    cout << string(e.what()) << endl;
-  }
-  cout << "Expected: " << cipher3 << endl;
-  cout << "Actually: " << result << endl;
-  if (result == cipher3)
-    cout << "Test passed!" << endl;
-  else
-    cout << "Test failed!" << endl;
+void testBytesCipher()
+{
+    string result;
+    shared_ptr<CallPaillier> callPaillier;
+    callPaillier = std::make_shared<CallPaillier>();
+    try
+    {
+        result = bytesToHexString(
+            callPaillier->paillierAdd(hexStringToBytes(cipher1), hexStringToBytes(cipher2)));
+    }
+    catch (CallException& e)
+    {
+        cout << string(e.what()) << endl;
+    }
+    cout << "Expected: " << cipher3 << endl;
+    cout << "Actually: " << result << endl;
+    if (result == cipher3)
+        cout << "Test passed!" << endl;
+    else
+        cout << "Test failed!" << endl;
 }
 
-int main() {
-  testHexCipher();
-  testBytesCipher();
-  return 0;
+int main()
+{
+    testHexCipher();
+    testBytesCipher();
+    return 0;
 }
